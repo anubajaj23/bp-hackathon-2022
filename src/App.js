@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 // import './forms/form.css';
 import ParkationSignupForm from "./forms/form";

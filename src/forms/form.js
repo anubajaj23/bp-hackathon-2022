@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
-import { DatePicker, Space } from 'antd';
+import { DatePicker } from 'antd';
 import dayjs from 'dayjs';
 import {
   Button,
@@ -13,10 +13,10 @@ import {
 const disabledDate = (current) => {
   return current && current < dayjs().startOf('day');;
 };
-const todayDate = (date) => {
-  date= dayjs().startOf('day');
-    return date;
-};
+// const todayDate = (date) => {
+//   date= dayjs().startOf('day');
+//     return date;
+// };
 
 // const Calendar = () =>(
 
