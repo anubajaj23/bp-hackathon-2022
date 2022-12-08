@@ -70,7 +70,7 @@ const App = () => {
   //   const ok = {...values,'dateOfParking': values['dateOfParking'].format('YYYY-MM-DD')
   // }
 
-    axios.post('http://localhost:8080/addUser',values)
+    axios.post('http://192.168.1.29:9000/addUser',values)
     .then(function (response) {
       console.log(response);
     })
