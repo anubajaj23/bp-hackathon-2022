@@ -1,46 +1,49 @@
 
 import React, { useState } from "react";
 import './App.css';
-import ParkationSignupForm from "./forms/form";
 import 'bootstrap/dist/css/bootstrap.css';
-import Register from './rider/register';
+import CarPooling from './rider/CarPooling';
+import image from "./images/bg.svg"; 
 
 
 function App() {
-  const [active, setActive] = useState("firsts");
+  const [active, setActive] = useState("s");
 
   return (
-
-    <div className="container pt-5 text-center">
+  <div  style={{backgroundImage: `url(${image})`, backgroundRepeat: 'repeat',
+  width:'100%',
+  height: '100vh'}}>
+    <div className="container pt-5 bg-image" >
       <div className="row">
-        <h1> Welcome to Parkation! </h1>
-        <div className="col mb-5 mt-5">
+        <h1 className="text-center"> Welcome to Parkation! </h1>
+        <div className="col mb-5 mt-5 text-center">
         <button 
-          className={`button ${active === "first" ? "btn-dark" : ""} btn btn-secondary`} 
+          className={`button ${active === "first" ? "btn-dark btn-active" : ""} btn btn-secondary btn-lg btn-block`} 
           onClick={() => {setActive("first");}}
         >
-          Are you a provider ?
+         Reserve your slot
         </button>
         <button
-          className={`button ${active === "Second" ? "btn-dark" : ""} btn btn-secondary ms-3`}
+          className={`button ${active === "Second" ? "btn-dark active" : ""} btn btn-secondary btn-lg btn-block ms-3`}
           onClick={() => {setActive("Second");}}
           >
-          Are you a rider ?
+          Car Pooling 
         </button>
         </div>
       </div>
 
       <div>
         {active === 'first' && (
-          <ParkationSignupForm />
+          <h1> Book your slot </h1>
         )}
       </div>
 
       <div>
         {active === 'Second' && (
-          <Register />
+         <CarPooling/>
         )}
       </div>
+    </div>
     </div>
   )
 }
