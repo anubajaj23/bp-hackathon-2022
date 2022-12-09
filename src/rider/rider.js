@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import axios from 'axios';
 import { DatePicker } from 'antd';
 import dayjs from 'dayjs';
@@ -47,8 +47,7 @@ const tailFormItemLayout = {
   },
 };
 
-const Register = () => {
-
+const Rider = () => {
   const [form] = Form.useForm();
   const onFinish = (values) => {
     axios.post('http://192.168.1.29:9000/addUser',values)
@@ -74,19 +73,25 @@ const Register = () => {
   );
     
   return (
+
+    <>
+    <div className="row mt-5 d-flex justify-content-center">
+        <h2 className="col col-8">Please fill following rider details</h2>
+    </div>
+    <div className="row mt-5 d-flex justify-content-center">
     <Form
       {...formItemLayout}
       labelAlign="left"
+      className=" col col-8"
       form={form}
-      name="register"
+      id="rider"
+      name="rider"
       onFinish={onFinish}
       initialValues={{
         prefix: '91',
       }}
       scrollToFirstError
     >
-
-
       <Form.Item 
        text-color="red"
         name="name"
@@ -118,22 +123,6 @@ const Register = () => {
       </Form.Item>
 
       <Form.Item
-        name="vehicleNo"
-        label="Vehicle No"
-        tooltip="What is your License plate number?"
-        rules={[
-          {
-            required: true,
-            message: 'Please input your Vehicle No!',
-            whitespace: true,
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-
-
-      <Form.Item
         name="phoneNo"
         label="Phone Number"
         rules={[
@@ -160,11 +149,14 @@ const Register = () => {
       </Form.Item>
 
       <Form.Item {...tailFormItemLayout}>
-        <Button type="primary" htmlType="submit">
-          Register
+        <Button type="primary" htmlType="submit" className="btn btn btn-dark">
+          Make Buddy
         </Button>
       </Form.Item>
     </Form>
+   
+    </div>
+    </>
   );
 };
-export default Register;
+export default Rider;
