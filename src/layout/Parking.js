@@ -40,7 +40,7 @@ function App() {
           <tr>
             <td>
                 <input id="sl_1" onClick={handler} type="radio" name="slot" value="sl_1" />
-                <label htmlFor="sl_1" className="parking"></label>
+                <label htmlFor="sl_1" className="parking booked">Anand (Booked)</label>
               
             </td>
             <td>
