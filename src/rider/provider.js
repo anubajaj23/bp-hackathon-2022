@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from 'axios';
 import { DatePicker } from 'antd';
 import dayjs from 'dayjs';
@@ -48,17 +48,24 @@ const tailFormItemLayout = {
 };
 
 const Provider = () => {
+  const [data, setData] = useState([]);
+  const [isShown, setIsShown] = useState(false);
+
+
   const [form] = Form.useForm();
   const onFinish = (values) => {
-    axios.post('http://192.168.1.29:9000/addUser',values)
+    axios.post('https://reqres.in/api/posts',values)
     .then(function (response) {
       console.log(response);
+      setData(response.data)
+      setIsShown(true);
     })
     .catch(function(error) {
       console.log(error)
     });
     
     console.log('Received values of form: ', values);
+
   };
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
@@ -75,10 +82,12 @@ const Provider = () => {
   return (
 
     <>
-    <div className="row mt-5 d-flex justify-content-center">
-        <h2 className="col col-8">Please fill following provider details</h2>
+    
+    <div className="row mt-5 ">
+       
     </div>
     <div className="row mt-5 d-flex justify-content-center">
+      {!isShown && 
     <Form
       {...formItemLayout}
       labelAlign="left"
@@ -92,16 +101,17 @@ const Provider = () => {
       }}
       scrollToFirstError
     >
+       <h2 className="col col-8">Please fill following provider details</h2>
       <Form.Item 
        text-color="red"
         name="name"
+        className="p3"
         label="Name"
         rules={[
           {
             required: true,
             message: 'Please input your nickname!',
             whitespace: true,
-            id: 'provider_name'
           }
         ]}
          >
@@ -111,13 +121,13 @@ const Provider = () => {
       <Form.Item
         name="pincode"
         label="Pin code"
+        className="p3"
         tooltip="What do you want others to call you?"
         rules={[
           {
             required: true,
-            message: 'Please input your pincode!',
+            message: 'Please input your nickname!',
             whitespace: true,
-            id: 'provider_pincode'
           },
         ]}
       >
@@ -127,13 +137,13 @@ const Provider = () => {
       <Form.Item
         name="vehicleNo"
         label="Vehicle No"
+        className="p3"
         tooltip="What is your License plate number?"
         rules={[
           {
             required: true,
             message: 'Please input your Vehicle No!',
             whitespace: true,
-            id: 'provider_vehiclenum'
           },
         ]}
       >
@@ -148,7 +158,6 @@ const Provider = () => {
           {
             required: true,
             message: 'Please input your phone number!',
-            id: 'provider_phone'
           },
         ]}
       >
@@ -161,14 +170,7 @@ const Provider = () => {
         />
       </Form.Item>
 
-      <Form.Item 
-        name="dateOfTravelling" 
-        label="Travel Date"
-        rules={[
-          {
-            id: 'provider_date'
-          },
-        ]} >
+      <Form.Item name="dateOfTravelling" label="Travel Date" >
         <DatePicker  
         format="YYYY-MM-DD"
         disabledDate={disabledDate}
@@ -176,12 +178,71 @@ const Provider = () => {
       </Form.Item>
 
       <Form.Item {...tailFormItemLayout}>
-        <Button type="primary" htmlType="submit" className="btn btn-dark" id="provide_buddy">
-        Make Buddy
+        <Button type="primary" htmlType="submit" className="btn btn-dark">
+        Find a travel mate
         </Button>
       </Form.Item>
     </Form>
+}
     </div>
+    
+
+    <div>
+        {isShown && <div className="row mt-5 d-flex justify-content-center">  <h3>Booking Details</h3><table cellPadding="0" cellSpacing="0" className="table table-bordered" border="1px">
+       
+          
+        <thead className="thead-dark">
+       
+        <tr border="1px">
+                      <td><b>Pincode</b> </td>  <td>121005 </td>
+          </tr>
+          <tr>
+                      <td><b>Travel Date</b></td> 
+                      <td>10/12/2022</td>
+                  </tr>
+                  <tr>
+                      <td><b>Vehicle Number</b></td> 
+                      <td>HR-12354</td>
+                  </tr>
+          </thead>
+          </table>
+          <h3 className="mt-5">Other Details</h3>
+
+          <table cellPadding="0" cellSpacing="0" className="table">
+
+          <thead>
+              <tr>
+                  <th>Type</th>
+                  <th>Name</th>
+                  <th>Phone</th>
+              </tr>
+          </thead>
+
+          <tbody>
+                  <tr>
+                      <td>Provider</td>
+                      <td>Anand Sharma</td>
+                      <td>9999255457</td>
+                  </tr>
+
+                  <tr>
+                      <td>Rider</td>
+                      <td>Anu Bajaj</td>
+                      <td>9999999999</td>
+                  </tr>
+
+                  <tr>
+                      <td>Rider</td>
+                      <td>Mayank</td>
+                      <td>9875657444</td>
+                  </tr>
+              
+          </tbody>
+      </table><button className=" col-3 mt-5 btn btn-success"> Connect via Whatsapp </button></div>
+      
+      }
+      </div>
+
     </>
   );
 };

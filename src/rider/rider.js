@@ -101,7 +101,6 @@ const Rider = () => {
             required: true,
             message: 'Please input your nickname!',
             whitespace: true,
-            id: 'rider_name'
           }
         ]}
          >
@@ -115,9 +114,8 @@ const Rider = () => {
         rules={[
           {
             required: true,
-            message: 'Please input your pincode!',
+            message: 'Please input your nickname!',
             whitespace: true,
-            id: 'rider_pincode'
           },
         ]}
       >
@@ -131,7 +129,6 @@ const Rider = () => {
           {
             required: true,
             message: 'Please input your phone number!',
-            id: 'rider_phone'
           },
         ]}
       >
@@ -144,12 +141,7 @@ const Rider = () => {
         />
       </Form.Item>
 
-      <Form.Item name="dateOfTravelling" label="Travel Date"
-      rules={[
-        {
-          id: 'rider_date'
-        },
-      ]} >
+      <Form.Item name="dateOfTravelling" label="Travel Date" >
         <DatePicker  
         format="YYYY-MM-DD"
         disabledDate={disabledDate}
@@ -157,8 +149,8 @@ const Rider = () => {
       </Form.Item>
 
       <Form.Item {...tailFormItemLayout}>
-        <Button type="primary" htmlType="submit" className="btn btn btn-dark" id="rider_buddy">
-          Make Buddy
+        <Button type="primary" htmlType="submit" className="btn btn btn-dark">
+          Find a travel mate
         </Button>
       </Form.Item>
     </Form>
