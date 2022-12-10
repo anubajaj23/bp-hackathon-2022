@@ -2,7 +2,7 @@ const { Client, LocalAuth } = require("whatsapp-web.js");
 const qrcode = require("qrcode-terminal");
  
 const myGroupName = "Parkation_poc";
-const contactName = "AKQA/Riya Grover";
+const contactName = "Anand AKQA";
  
 const client = new Client({
   authStrategy: new LocalAuth(),
@@ -29,7 +29,6 @@ client.on("ready", () => {
         (contact) => contact.name === contactName
       );
 
-      console.log(contactToAdd, 'adding', '+++++++++', contactToAdd.id._serialized)
       if (contactToAdd) {
         myGroup.addParticipants([contactToAdd.id._serialized])
           .then(() =>
