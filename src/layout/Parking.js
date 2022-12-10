@@ -33,7 +33,7 @@ function App() {
       <table className="parkingLayout">
         <thead>
           <tr>
-            <td colSpan="4">AKQA</td>
+            <td colSpan="4"> <h3 className="mt-5 mb-3">Parking Slots </h3></td>
           </tr>
         </thead>
         <tbody>
@@ -50,7 +50,7 @@ function App() {
             </td>
             <td>
                 <input id="sl_3" onClick={handler} type="radio" name="slot" value="sl_3" disabled />
-                <label htmlFor="sl_3" className="parking reserved"></label>
+                <label htmlFor="sl_3" className="parking reserved">Gaurav (Reserved)</label>
               
             </td>
             <td>
@@ -68,7 +68,7 @@ function App() {
             </td>
             <td>
                 <input id="sl_6" onClick={handler} type="radio" name="slot" value="sl_6" disabled />
-                <label htmlFor="sl_6" className="parking reserved"></label>
+                <label htmlFor="sl_6" className="parking reserved">Anurag (Reserved)</label>
               
             </td>
             <td>
@@ -91,7 +91,7 @@ function App() {
             </td>
             <td>
                 <input id="sl_10" onClick={handler} type="radio" name="slot" value="sl_10" disabled />
-                <label htmlFor="sl_10" className="parking booked"></label>
+                <label htmlFor="sl_10" className="parking booked">Madhur (Booked)</label>
               
             </td>
             <td>
@@ -106,11 +106,7 @@ function App() {
             </td>
           </tr>
         </tbody>
-        <tfoot>
-          <tr>
-            <td colSpan="4">WPP</td>
-          </tr>
-        </tfoot>
+       
       </table>
 
       {/* <input type="button" value="Next"  onClick={ontick}/> */}

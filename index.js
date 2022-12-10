@@ -2,7 +2,7 @@ const { Client, LocalAuth } = require("whatsapp-web.js");
 const qrcode = require("qrcode-terminal");
  
 const myGroupName = "Parkation_poc";
-const contactName = "Neha Akqa";
+const contactName = "AKQA/Riya Grover";
  
 const client = new Client({
   authStrategy: new LocalAuth(),

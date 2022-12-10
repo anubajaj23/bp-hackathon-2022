@@ -98,7 +98,10 @@ const ParkingForm = () => {
   };
 
 
-
+const handlingReserveParking = () => {
+  alert('Your parking slot has been reserved')
+  window.location.reload()
+}
     
   return (
 
@@ -185,7 +188,6 @@ const ParkingForm = () => {
       </Form.Item>
 
 
-
       <Form.Item
         name="vehicleNo"
         label="Vehicle No"
@@ -200,16 +202,6 @@ const ParkingForm = () => {
       >
         <Input />
       </Form.Item>
-
-
-
-<Form.Item
-        name="slot"
-        label="Slot"
-      >
-        <Input />
-      </Form.Item>
-    
 
 
       <Form.Item
@@ -234,7 +226,7 @@ const ParkingForm = () => {
 
       <Form.Item
         name="address"
-        label="Address"
+        label="Pin code"
         rules={[
           {
             required: true,
@@ -250,7 +242,7 @@ const ParkingForm = () => {
       
 
       <Form.Item {...tailFormItemLayout}>
-        <Button type="primary" htmlType="submit" >
+        <Button type="primary" htmlType="submit" onClick={handlingReserveParking}>
           Reserve
         </Button>
       </Form.Item>

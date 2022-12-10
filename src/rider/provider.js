@@ -222,7 +222,7 @@ const Provider = () => {
                   <tr>
                       <td>Provider</td>
                       <td>Anand Sharma</td>
-                      <td>9999255457</td>
+                      <td>8875783226</td>
                   </tr>
 
                   <tr>
