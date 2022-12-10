@@ -20,12 +20,14 @@ function App() {
         <button 
           className={`button ${active === "first" ? "btn-dark btn-active" : ""} btn btn-secondary btn-lg btn-block`} 
           onClick={() => {setActive("first");}}
+          id="slot_booking"
         >
          Reserve your slot
         </button>
         <button
           className={`button ${active === "Second" ? "btn-dark active" : ""} btn btn-secondary btn-lg btn-block ms-3`}
           onClick={() => {setActive("Second");}}
+          id="car_pool"
           >
           Car Pooling 
         </button>
