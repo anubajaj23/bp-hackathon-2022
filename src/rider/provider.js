@@ -101,6 +101,7 @@ const Provider = () => {
             required: true,
             message: 'Please input your nickname!',
             whitespace: true,
+            id: 'provider_name'
           }
         ]}
          >
@@ -114,8 +115,9 @@ const Provider = () => {
         rules={[
           {
             required: true,
-            message: 'Please input your nickname!',
+            message: 'Please input your pincode!',
             whitespace: true,
+            id: 'provider_pincode'
           },
         ]}
       >
@@ -131,6 +133,7 @@ const Provider = () => {
             required: true,
             message: 'Please input your Vehicle No!',
             whitespace: true,
+            id: 'provider_vehiclenum'
           },
         ]}
       >
@@ -145,6 +148,7 @@ const Provider = () => {
           {
             required: true,
             message: 'Please input your phone number!',
+            id: 'provider_phone'
           },
         ]}
       >
@@ -157,7 +161,14 @@ const Provider = () => {
         />
       </Form.Item>
 
-      <Form.Item name="dateOfTravelling" label="Travel Date" >
+      <Form.Item 
+        name="dateOfTravelling" 
+        label="Travel Date"
+        rules={[
+          {
+            id: 'provider_date'
+          },
+        ]} >
         <DatePicker  
         format="YYYY-MM-DD"
         disabledDate={disabledDate}
@@ -165,7 +176,7 @@ const Provider = () => {
       </Form.Item>
 
       <Form.Item {...tailFormItemLayout}>
-        <Button type="primary" htmlType="submit" className="btn btn-dark">
+        <Button type="primary" htmlType="submit" className="btn btn-dark" id="provide_buddy">
         Make Buddy
         </Button>
       </Form.Item>
