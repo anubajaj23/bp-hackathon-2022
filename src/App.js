@@ -23,17 +23,7 @@ function App() {
 
       </div>
 
-      <div>
-        {active === 'first' && (
-          <ParkingForm/>
-        )}
-      </div>
 
-      <div>
-        {active === 'Second' && (
-         <CarPooling/>
-        )}
-      </div>
     </div>
     </div>
   )

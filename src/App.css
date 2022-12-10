@@ -39,9 +39,13 @@
 
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .visible{
   display: block;
+}
+
+button:focus{
+  border: 1px dotted #c0c0c0 !important;
 }
