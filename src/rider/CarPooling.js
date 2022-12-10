@@ -9,7 +9,7 @@ const CarPooling = () => {
 
     <>
     <div className="row mb-5 mt-5 d-flex justify-content-center bg-white p-5">
-      <div className="row mb-5 mt-5 d-flex justify-content-center bg-white p-5">
+      <div className="row mb-5 mt-5 d-flex justify-content-center bg-white">
         <div className={`button ${active === "provider" ? "provider-click border-dark" : ""} btn col col-4 mt-3 border p-5`} 
           onClick={() => {setActive("provider");}}>
           <h2>Are you a provider ? </h2>
