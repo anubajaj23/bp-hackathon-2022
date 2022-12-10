@@ -29,18 +29,19 @@
 .parking {
     width: 100px;
     height: 100px;
-    background-color: rgba(15, 108, 15, 0.851);
+    background-color: #72df726b;
+    margin: 0;
 
     &.reserved {
-        background-color: rgba(0, 0, 0, 0.733);
+        background-color: #5d5d5d94;
         color: #fff;
     }
     &.booked {
-        background-color: rgba(66, 9, 9, 0.866);
+        background-color: #ff7a62;
         color: #fff;
     }
     &.booking {
-        background-color: rgb(50, 179, 230);
+        background-color: #61c7ff8a;
     }
 }
 
