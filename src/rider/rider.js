@@ -150,7 +150,7 @@ const Rider = () => {
 
       <Form.Item {...tailFormItemLayout}>
         <Button type="primary" htmlType="submit" className="btn btn btn-dark">
-          Make Buddy
+          Find a travel mate
         </Button>
       </Form.Item>
     </Form>
