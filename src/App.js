@@ -1,14 +1,11 @@
 
-import React, { useState } from "react";
+import React from "react";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import CarPooling from './rider/CarPooling';
 import image from "./images/bg.svg"; 
-import ParkingForm from './forms/form'
 import SignInSignupWithLocalStorage from './signup';
 
 function App() {
-  const [active, setActive] = useState("s");
 
   return (
   <div  style={{backgroundImage: `url(${image})`, backgroundRepeat: 'repeat',
