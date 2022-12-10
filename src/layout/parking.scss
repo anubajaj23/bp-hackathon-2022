@@ -1,0 +1,74 @@
+.parkingLayout{
+    margin: 0 auto;
+    // background-color: black;
+
+    thead{
+        font-weight: bold;
+        text-align: center;
+    }
+    tbody{
+        
+        img{
+
+            height:100px;
+            width:100px;
+        } 
+    }
+
+    tfoot{
+        text-align: center;
+    }
+
+}
+
+.datelabel{
+    background-color: rgba(251, 252, 249, 0.924);
+    text-align: center;
+}
+
+.parking {
+    width: 100px;
+    height: 100px;
+    background-color: rgba(15, 108, 15, 0.851);
+
+    &.reserved {
+        background-color: rgba(0, 0, 0, 0.733);
+        color: #fff;
+    }
+    &.booked {
+        background-color: rgba(66, 9, 9, 0.866);
+        color: #fff;
+    }
+    &.booking {
+        background-color: rgb(50, 179, 230);
+    }
+}
+
+.parking {
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    position: relative;
+    cursor: pointer;
+    display: block;
+
+    &.reserved {
+      background-color:lightslategrey;
+      cursor: not-allowed;
+    }
+    &.booked {
+      background-color:tomato;
+      cursor: default;
+    }
+    &.booking {
+      background-color:skyblue
+    }
+}
+[type="radio"] {
+    position: absolute;
+    z-index: -1;
+
+    &:checked + .parking {
+        background-color: aqua;
+    }
+}

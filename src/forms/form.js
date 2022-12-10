@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import { DatePicker } from 'antd';
 import dayjs from 'dayjs';
+import "./form.css";
 import {
   Button,
   Form,
@@ -9,25 +9,21 @@ import {
   Select,
 } from 'antd';
 
+import Layout from '../layout/Parking'
 
-const disabledDate = (current) => {
-  return current && current < dayjs().startOf('day');;
-};
+
+// const disabledDate = (current) => {
+//   return current && current < dayjs().startOf('day');;
+// };
 // const todayDate = (date) => {
 //   date= dayjs().startOf('day');
 //     return date;
 // };
 
-// const Calendar = () =>(
+const handler = (e)=>{
+  console.log(e.target.value)
+}
 
-//   <Space direction="vertical" size={12}>
-//     <DatePicker
-//       format="YYYY-MM-DD"
-//       disabledDate={disabledDate} 
-//       defaultValue ={dayjs}
-//     /> 
-//   </Space>
-// );
 
 
 const { Option } = Select;
@@ -63,14 +59,10 @@ const tailFormItemLayout = {
   },
 };
 
-const App = () => {
+const ParkingForm = () => {
   const [form] = Form.useForm();
   const onFinish = (values) => {
-
-  //   const ok = {...values,'dateOfParking': values['dateOfParking'].format('YYYY-MM-DD')
-  // }
-
-    axios.post('http://192.168.1.29:9000/addUser',values)
+    axios.post('http://localhost:8080/addUser',values)
     .then(function (response) {
       console.log(response);
     })
@@ -91,8 +83,29 @@ const App = () => {
       </Select>
     </Form.Item>
   );
+
+
+   const [isActive, setActive] = useState("false");
+    // const ToggleClass = () => {
+    // setActive(!isActive); 
+    // };
+
+  const ontick =(e) => {
+    // setActive(current => !current);
+    e.currentTarget.classList.toggle('hidden');
+    document.querySelector(".layoutSelection").classList.toggle('hidden');
+    setActive(!isActive);
+  };
+
+
+
     
   return (
+
+    <>
+    
+    <div className="row mb-5 mt-5 d-flex justify-content-center bg-white p-5">
+
     <Form
       {...formItemLayout}
       labelAlign="left"
@@ -105,10 +118,39 @@ const App = () => {
       scrollToFirstError
     >
 
+      <label className="col-2"> Select Travel Date: </label>
+      {/* <span className='dateSpan'> */}
+       <input
+        className="datelabel"
+        type="date"
+        id="dt"
+        onChange={handler}
+        min={new dayjs().startOf("day").format("YYYY-MM-DD")}
+        defaultValue={new dayjs().startOf("day").format("YYYY-MM-DD")}
+      /> 
+      {/* </span> */}
 
 
+       {/* <Form.Item name="dateOfParking"  >
+        <DatePicker  
+        format="YYYY-MM-DD"
+        disabledDate={disabledDate}
+        // defaultValue={new }
+      
+        />
+      </Form.Item> */}
 
 
+      <section className='layoutSelection'>
+     <Form.Item  name="slot1"
+        label="." >
+        <Layout />
+      </Form.Item >
+      </section>
+
+      <button type="button" value="Next" className="btn btn-dark"  onClick={ontick}> Submit </button>
+
+      <section className={isActive ? "hidden" : null}>
       <Form.Item 
        text-color="red"
         name="email"
@@ -127,19 +169,6 @@ const App = () => {
         <Input />
       </Form.Item>
 
-      {/* <Form.Item
-        name="password"
-        label="Password"
-        rules={[
-          {
-            required: true,
-            message: 'Please input your password!',
-          },
-        ]}
-      >
-        <Input.Password  size="large" />
-      </Form.Item> */}
-
       <Form.Item
         name="name"
         label="Name"
@@ -155,20 +184,6 @@ const App = () => {
         <Input />
       </Form.Item>
 
-      {/* <Form.Item
-        name="employeeid"
-        label="Employee ID"
-        tooltip="What is your employee id?"
-        rules={[
-          {
-            required: true,
-            message: 'Please input your employee id!',
-            whitespace: true,
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item> */}
 
 
       <Form.Item
@@ -186,13 +201,6 @@ const App = () => {
         <Input />
       </Form.Item>
 
-{/* 
-      <Form.Item
-        name="company"
-        label="Company"
-      >
-        <Input />
-      </Form.Item> */}
 
 
 <Form.Item
@@ -224,17 +232,6 @@ const App = () => {
       </Form.Item>
 
 
-
-      <Form.Item name="dateOfParking" label="Date" >
-        <DatePicker  
-        format="YYYY-MM-DD"
-        disabledDate={disabledDate}
-        
-      
-        />
-      </Form.Item>
-
-
       <Form.Item
         name="address"
         label="Address"
@@ -253,20 +250,14 @@ const App = () => {
       
 
       <Form.Item {...tailFormItemLayout}>
-        <Button type="primary" htmlType="submit">
-          Register
+        <Button type="primary" htmlType="submit" >
+          Reserve
         </Button>
       </Form.Item>
+      </section>
     </Form>
+  </div>
+  </>
   );
 };
-export default App;
-
-
-
-
-
-
-
-
-
+export default ParkingForm;

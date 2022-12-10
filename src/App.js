@@ -4,7 +4,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import CarPooling from './rider/CarPooling';
 import image from "./images/bg.svg"; 
-
+import ParkingForm from './forms/form'
 
 function App() {
   const [active, setActive] = useState("s");
@@ -34,7 +34,7 @@ function App() {
 
       <div>
         {active === 'first' && (
-          <h1> Book your slot </h1>
+          <ParkingForm/>
         )}
       </div>
 
